@@ -44,7 +44,7 @@ class Tour {
         $bd->conectar();
         $columnas = array('id', 'nombre', 'descripcion', 'empresa', 'telefono', 'correo');
         $filtros = array('id' => $id);
-        $datos = $bd->select(self::$tabla, $columnas, $filtros);
+        $datos = $bd->select(self::$tabla, $columnas, $filtros,false);
         $tour = new Tour();
         foreach ($datos as $item) {
             $tour->id = $item['id'];
@@ -63,7 +63,7 @@ class Tour {
         $bd = BaseDatos::getInstance();
         $bd->conectar();
         $columnas = array('id', 'nombre', 'descripcion', 'empresa', 'telefono', 'correo');
-        $datos = $bd->select(self::$tabla, $columnas);
+        $datos = $bd->select(self::$tabla, $columnas,null,false);
         $tours = array();
         foreach ($datos as $item) {
             $tour=new Tour();

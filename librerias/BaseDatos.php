@@ -22,7 +22,7 @@ class BaseDatos {
         }
     }
 
-    public function select($tabla, $columnas, $filtros = null) {
+    public function select($tabla, $columnas, $filtros = null,$random) {
         $columnasStr = '';
         $filtrosStr = '';
         foreach ($columnas as $columnasArrItem) {
@@ -38,7 +38,14 @@ class BaseDatos {
             $filtrosStr = '1 = 1';
         }
         $datos = array();
-        $sql = "SELECT $columnasStr FROM $tabla WHERE $filtrosStr;";
+        if ($random)
+        {
+        	$sql = "SELECT $columnasStr FROM $tabla WHERE $filtrosStr ORDER BY RAND();"; // permite desplegar filas aleatorizadas
+        }
+        else 
+        {
+        	$sql = "SELECT $columnasStr FROM $tabla WHERE $filtrosStr;";
+        }
         //die($sql);
         $result = $this->conexion->query($sql);
         if ($result->num_rows > 0) {

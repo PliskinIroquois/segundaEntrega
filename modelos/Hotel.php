@@ -48,7 +48,7 @@ class Hotel {
         $bd->conectar();
         $columnas = array('id', 'nombre', 'descripcion', 'estrellas', 'ciudad', 'direccion', 'telefono', 'correo');
         $filtros = array('id' => $id);
-        $datos = $bd->select(self::$tabla, $columnas, $filtros);
+        $datos = $bd->select(self::$tabla, $columnas, $filtros,false);
         $hotel = new Hotel();
         foreach ($datos as $item) {
             $hotel->id = $item['id'];
@@ -69,7 +69,7 @@ class Hotel {
         $bd = BaseDatos::getInstance();
         $bd->conectar();
         $columnas = array('id', 'nombre', 'descripcion', 'estrellas', 'ciudad', 'direccion', 'telefono', 'correo');
-        $datos = $bd->select(self::$tabla, $columnas);
+        $datos = $bd->select(self::$tabla, $columnas,null,false);
         $hoteles = array();
         foreach ($datos as $item) {
             $hotel=new Hotel();

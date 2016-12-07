@@ -1,8 +1,9 @@
 <?php
 require_once ROOT_PATH . '/vistas/_commons/header.php';
 require_once ROOT_PATH . '/vistas/_commons/navigation.php';
+//index de hoteles
 ?>
-
+<?php if (LoginController::getUsuario()): ?>
 <div id="page-wrapper">
     <div class="panel panel-info">
         <div class="panel-heading">Hoteles</div>
@@ -12,7 +13,10 @@ require_once ROOT_PATH . '/vistas/_commons/navigation.php';
             <button class="btn btn-success">Crear Hotel</button>
         </a>
     </div>
+ 
+	<?php echo "entered IF";?>
     <div class="user-index-container">
+        <?php endif; ?>
         <table width="100%" class="table table-striped table-bordered table-hover">
             <tr>
                 <th>Nombre</th>
@@ -38,9 +42,11 @@ require_once ROOT_PATH . '/vistas/_commons/navigation.php';
                     <td><?php echo $hotel->telefono; ?></td>
                     <td><?php echo $hotel->correo; ?></td>
                     <td>
+                    <?php if (LoginController::getUsuario()): ?>
                         <a href="hotel.php?action=edit&id=<?php echo $hotel->id; ?>">Editar</a>
                         &nbsp; | &nbsp;
                         <a href="hotel.php?action=delete&id=<?php echo $hotel->id; ?>">Eliminar</a>
+                        <?php endif;?>
                     </td>
                 </tr>
             <?php endforeach; ?>
