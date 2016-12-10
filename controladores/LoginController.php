@@ -26,7 +26,6 @@ class LoginController {
         $nombreUsuario = $request->input('username');
         $contrasena = $request->input('password');
         $usuario = Usuario::findByNombreUsuario($nombreUsuario);
-        //print_r($usuario); die();
         if ($usuario->password == Usuario::encryptPassword($contrasena)) {
             $_SESSION['usuario'] = serialize($usuario);
             header('Location: ' . WEB_PATH . '/usuario.php');
@@ -40,7 +39,7 @@ class LoginController {
         if (session_status() != PHP_SESSION_NONE) {
             session_destroy();
         }
-        header('Location: ' . WEB_PATH . '/login.php');
+        header('Location: ' . WEB_PATH . '/index.html');
     }
 
     public static function validate() {

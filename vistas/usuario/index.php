@@ -1,9 +1,7 @@
 <?php
 require_once ROOT_PATH . '/vistas/_commons/header.php';
 require_once ROOT_PATH . '/vistas/_commons/navigation.php';
-//index de Usuarios
 ?>
-
 
 <div id="page-wrapper">
     <div class="panel panel-info">
@@ -14,7 +12,6 @@ require_once ROOT_PATH . '/vistas/_commons/navigation.php';
             <button class="btn btn-success">Crear Usuario</button>
         </a>
     </div>
-    
     <div class="user-index-container">
         <table width="100%" class="table table-striped table-bordered table-hover">
             <tr>

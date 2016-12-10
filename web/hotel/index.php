@@ -1,7 +1,11 @@
+<link rel="shortcut icon" type="image/x-icon" href="images/hotel.ico" />
+<meta charset="utf-8">
+<title>Agencia de Viajes S.A</title>
+
 <?php
 require_once ROOT_PATH . '/vistas/_commons/header.php';
-require_once ROOT_PATH . '/vistas/_commons/navigation.php';
-//index del Hotel
+
+//index web Hotel
 ?>
 
 <div id="page-wrapper">
@@ -9,9 +13,7 @@ require_once ROOT_PATH . '/vistas/_commons/navigation.php';
         <div class="panel-heading">Hoteles</div>
     </div>
     <div class="crear-container">
-        <a href="hotel.php?action=create">
-            <button class="btn btn-success">Crear Hotel</button>
-        </a>
+     
     </div>
     <div class="user-index-container">
         <table width="100%" class="table table-striped table-bordered table-hover">
@@ -23,12 +25,12 @@ require_once ROOT_PATH . '/vistas/_commons/navigation.php';
                 <th>Direccion</th>
                 <th>Telefono</th>
                 <th>Correo</th>
-                <th></th>
+                
             </tr>
             <?php foreach ($hoteles as $hotel): ?>
                 <tr>
                     <td>
-                        <a href="hotel.php?action=show&id=<?php echo $hotel->id; ?>">
+                        <a href="hoteles.php?action=show&id=<?php echo $hotel->id; ?>">
                             <?php echo ($hotel->nombre); ?>
                         </a>
                     </td>
@@ -38,13 +40,12 @@ require_once ROOT_PATH . '/vistas/_commons/navigation.php';
                     <td><?php echo $hotel->direccion; ?></td>
                     <td><?php echo $hotel->telefono; ?></td>
                     <td><?php echo $hotel->correo; ?></td>
-                    <td>
-                        <a href="hotel.php?action=edit&id=<?php echo $hotel->id; ?>">Editar</a>
-                        &nbsp; | &nbsp;
-                        <a href="hotel.php?action=delete&id=<?php echo $hotel->id; ?>">Eliminar</a>
-                    </td>
                 </tr>
+                
             <?php endforeach; ?>
+            <tr> <a href="hoteles.php?action=showMainPage">
+            <button class="btn btn-success">Menu Principal</button>
+        </a></tr>
         </table>
     </div>
 </div>

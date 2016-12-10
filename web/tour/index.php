@@ -1,7 +1,7 @@
 <?php
 require_once ROOT_PATH . '/vistas/_commons/header.php';
-require_once ROOT_PATH . '/vistas/_commons/navigation.php';
-//Index de tours
+
+//Index web de tours
 ?>
 
 <div id="page-wrapper">
@@ -9,9 +9,7 @@ require_once ROOT_PATH . '/vistas/_commons/navigation.php';
         <div class="panel-heading">Tours</div>
     </div>
     <div class="crear-container">
-        <a href="tour.php?action=create">
-            <button class="btn btn-success">Crear Tour</button>
-        </a>
+  
     </div>
     <div class="user-index-container">
         <table width="100%" class="table table-striped table-bordered table-hover">
@@ -27,7 +25,7 @@ require_once ROOT_PATH . '/vistas/_commons/navigation.php';
             <?php foreach ($tours as $tour): ?>
                 <tr>
                     <td>
-                        <a href="tour.php?action=show&id=<?php echo $tour->id; ?>">
+                        <a href="tours.php?action=show&id=<?php echo $tour->id; ?>"> <!-- cambiar -->
                             <?php echo ($tour->nombre); ?>
                         </a>
                     </td>
@@ -35,13 +33,11 @@ require_once ROOT_PATH . '/vistas/_commons/navigation.php';
                     <td><?php echo $tour->empresa; ?></td>
                     <td><?php echo $tour->telefono; ?></td>
                     <td><?php echo $tour->correo; ?></td>
-                    <td>
-                        <a href="tour.php?action=edit&id=<?php echo $tour->id; ?>">Editar</a>
-                        &nbsp; | &nbsp;
-                        <a href="tour.php?action=delete&id=<?php echo $tour->id; ?>">Eliminar</a>
-                    </td>
-                </tr>
+                                </tr>
             <?php endforeach; ?>
+             <tr> <a href="tours.php?action=showMainPage">
+            <button class="btn btn-success">Menu Principal</button>
+        </a></tr>
         </table>
     </div>
 </div>

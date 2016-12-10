@@ -13,7 +13,7 @@ require_once 'modelos/Hotel.php';
 
 LoginController::validate();
 
-$action = isset($_GET['action']) ? $_GET['action'] : 'index';//por default muestra el index
+$action = isset($_GET['action']) ? $_GET['action'] : 'index';
 $id = isset($_GET['id']) ? $_GET['id'] : 0;
 
 $controller = new HotelController($_SERVER['REQUEST_METHOD']);

@@ -48,7 +48,7 @@ class Hotel {
         $bd->conectar();
         $columnas = array('id', 'nombre', 'descripcion', 'estrellas', 'ciudad', 'direccion', 'telefono', 'correo');
         $filtros = array('id' => $id);
-        $datos = $bd->select(self::$tabla, $columnas, $filtros,false);
+        $datos = $bd->select(self::$tabla, $columnas, $filtros);
         $hotel = new Hotel();
         foreach ($datos as $item) {
             $hotel->id = $item['id'];
@@ -69,7 +69,7 @@ class Hotel {
         $bd = BaseDatos::getInstance();
         $bd->conectar();
         $columnas = array('id', 'nombre', 'descripcion', 'estrellas', 'ciudad', 'direccion', 'telefono', 'correo');
-        $datos = $bd->select(self::$tabla, $columnas,null,false);
+        $datos = $bd->select(self::$tabla, $columnas);
         $hoteles = array();
         foreach ($datos as $item) {
             $hotel=new Hotel();
@@ -85,6 +85,30 @@ class Hotel {
         }
         $bd->desconectar();
         return $hoteles;
+    }
+    
+    public static function findRandTop5() { //muestra el top 5 aleatorio
+    		   
+    	$bd = BaseDatos::getInstance();
+    	$bd->conectar();
+    	$columnas = array('id', 'nombre', 'descripcion', 'estrellas', 'ciudad', 'direccion', 'telefono', 'correo');
+    	$datos = $bd->selectRand(self::$tabla, $columnas);
+    	$hoteles = array();
+    	foreach ($datos as $item) {
+    		$hotel=new Hotel();
+    		$hotel->id = $item['id'];
+    		$hotel->nombre = $item['nombre'];
+    		$hotel->descripcion = $item['descripcion'];
+    		$hotel->estrellas = $item['estrellas'];
+    		$hotel->ciudad = $item['ciudad'];
+    		$hotel->direccion = $item['direccion'];
+    		$hotel->telefono = $item['telefono'];
+    		$hotel->correo = $item['correo'];
+    		array_push($hoteles, $hotel);
+    	}
+    	$bd->desconectar();
+    	return $hoteles;
+    	
     }
 
 }

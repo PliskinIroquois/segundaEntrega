@@ -23,9 +23,20 @@ require_once ROOT_PATH . '/vistas/_commons/header.php';
                                 </label>
                             </div-->
                             <!-- Change this to a button or input when using this as a form -->
-                            <input type="submit" value="Entrar" class="btn btn-success" />
+
+                          <table width="200" border="0">
+                              <tr>
+                                <td><input type="submit" value="Entrar" class="btn btn-success" /></td>
+                                <td></td>
+                            </tr>
+                          </table>
                         </fieldset>
-                    </form>
+                        </form>
+                        <a href="index.html">
+                                  <button class="btn btn-success">Menu Principal</button>
+                                </a>
+                    
+                  <a href="index.html"></a>
                 </div>
             </div>
             <?php if ($error): ?>

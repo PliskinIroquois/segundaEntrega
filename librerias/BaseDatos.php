@@ -22,7 +22,7 @@ class BaseDatos {
         }
     }
 
-    public function select($tabla, $columnas, $filtros = null,$random) {
+    public function select($tabla, $columnas, $filtros = null) {
         $columnasStr = '';
         $filtrosStr = '';
         foreach ($columnas as $columnasArrItem) {
@@ -38,14 +38,7 @@ class BaseDatos {
             $filtrosStr = '1 = 1';
         }
         $datos = array();
-        if ($random)
-        {
-        	$sql = "SELECT $columnasStr FROM $tabla WHERE $filtrosStr ORDER BY RAND();"; // permite desplegar filas aleatorizadas
-        }
-        else 
-        {
-        	$sql = "SELECT $columnasStr FROM $tabla WHERE $filtrosStr;";
-        }
+        $sql = "SELECT $columnasStr FROM $tabla WHERE $filtrosStr;";
         //die($sql);
         $result = $this->conexion->query($sql);
         if ($result->num_rows > 0) {
@@ -138,6 +131,32 @@ class BaseDatos {
             self::$BD = new BaseDatos(BD_USUARIO, BD_CONTRASENA, BD_NOMBRE_BD, BD_SERVIDOR);
         }
         return self::$BD;
+    }
+    public function selectRand($tabla, $columnas, $filtros = null) {
+    	$columnasStr = '';
+    	$filtrosStr = '';
+    	foreach ($columnas as $columnasArrItem) {
+    		$columnasStr .= ($columnasArrItem . ', ');
+    	}
+    	$columnasStr = trim($columnasStr, ', ');
+    	if (!is_null($filtros)) {
+    		foreach ($filtros as $columna => $valor) {
+    			$filtrosStr .= "{$columna} = '{$valor}' AND ";
+    		}
+    		$filtrosStr = substr($filtrosStr, 0, strlen($filtrosStr) - 5);
+    	} else {
+    		$filtrosStr = '1 = 1';
+    	}
+    	$datos = array();
+    	$sql = "SELECT $columnasStr FROM $tabla ORDER BY RAND() LIMIT 5;"; //top 5 aleatorio
+    	
+    	$result = $this->conexion->query($sql);
+    	if ($result->num_rows > 0) {
+    		while ($row = $result->fetch_assoc()) {
+    			array_push($datos, $row);
+    		}
+    	}
+    	return $datos;
     }
 
 }

@@ -44,7 +44,7 @@ class Tour {
         $bd->conectar();
         $columnas = array('id', 'nombre', 'descripcion', 'empresa', 'telefono', 'correo');
         $filtros = array('id' => $id);
-        $datos = $bd->select(self::$tabla, $columnas, $filtros,false);
+        $datos = $bd->select(self::$tabla, $columnas, $filtros);
         $tour = new Tour();
         foreach ($datos as $item) {
             $tour->id = $item['id'];
@@ -63,7 +63,7 @@ class Tour {
         $bd = BaseDatos::getInstance();
         $bd->conectar();
         $columnas = array('id', 'nombre', 'descripcion', 'empresa', 'telefono', 'correo');
-        $datos = $bd->select(self::$tabla, $columnas,null,false);
+        $datos = $bd->select(self::$tabla, $columnas);
         $tours = array();
         foreach ($datos as $item) {
             $tour=new Tour();
@@ -77,6 +77,27 @@ class Tour {
         }
         $bd->desconectar();
         return $tours;
+    }
+  
+    
+    public static function findRandTop5(){
+    	$bd = BaseDatos::getInstance();
+    	$bd->conectar();
+    	$columnas = array('id', 'nombre', 'descripcion', 'empresa', 'telefono', 'correo');
+    	$datos = $bd->selectRand(self::$tabla, $columnas);
+    	$tours = array();
+    	foreach ($datos as $item) {
+    		$tour=new Tour();
+    		$tour->id = $item['id'];
+    		$tour->nombre = $item['nombre'];
+    		$tour->descripcion = $item['descripcion'];
+    		$tour->empresa = $item['empresa'];
+    		$tour->telefono = $item['telefono'];
+    		$tour->correo = $item['correo'];
+    		array_push($tours, $tour);
+    	}
+    	$bd->desconectar();
+    	return $tours;
     }
 
 }

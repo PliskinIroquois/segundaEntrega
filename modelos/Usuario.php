@@ -53,7 +53,7 @@ class Usuario {
         $bd->conectar();
         $columnas = array('id', 'nombre', 'apellidos', 'telefono', 'correo', 'usuario', 'es_admin', 'password');
         $filtros = array('id' => $id);
-        $datos = $bd->select(self::$tabla, $columnas, $filtros,false);
+        $datos = $bd->select(self::$tabla, $columnas, $filtros);
         $usuario = new Usuario();
         foreach ($datos as $item) {
             $usuario->id = $item['id'];
@@ -75,7 +75,7 @@ class Usuario {
         $bd->conectar();
         $columnas = array('id', 'nombre', 'apellidos', 'telefono', 'correo', 'usuario', 'es_admin', 'password');
         $filtros = array('usuario' => $nombreUsuario);
-        $datos = $bd->select(self::$tabla, $columnas, $filtros,false);
+        $datos = $bd->select(self::$tabla, $columnas, $filtros);
         $usuario = new Usuario();
         foreach ($datos as $item) {
             $usuario->id = $item['id'];
@@ -96,7 +96,7 @@ class Usuario {
         $bd = BaseDatos::getInstance();
         $bd->conectar();
         $columnas = array('id', 'nombre', 'apellidos', 'telefono', 'correo', 'usuario', 'es_admin');
-        $datos = $bd->select(self::$tabla, $columnas,null,false);
+        $datos = $bd->select(self::$tabla, $columnas);
         $usuarios = array();
         foreach ($datos as $item) {
             $usuario = new Usuario();
