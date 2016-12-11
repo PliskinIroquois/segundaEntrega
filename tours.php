@@ -21,9 +21,11 @@ switch ($action) {
     case 'showMainPage':
     	$webcontroller->showMainPage();
     	break;
-    
     case 'show':
     	$webcontroller->show($id);
     	break;
+    	case 'show2':
+    		$webcontroller->show2($id);
+    		break;
         
 }

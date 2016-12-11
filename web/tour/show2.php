@@ -3,7 +3,7 @@ require_once ROOT_PATH . '/vistas/_commons/header.php';
 
 //tour web show
 ?>
-
+<form method="post" action="hoteles.php?action=showBoth">
 <div id="page-wrapper">
     <div class="panel panel-info">
         <div class="panel-heading"><?php echo $tour->nombre; ?></div>
@@ -15,14 +15,13 @@ require_once ROOT_PATH . '/vistas/_commons/header.php';
             <p><strong>Correo de la empresa: </strong><?php echo $tour->correo; ?></p>
             <p>
                 <a href="<?php echo (WEB_PATH . '/tours.php') ?>">
-                    <input type="button" value="Volver" class="btn btn-success" />
+                    <input type="submit" value="Volver" class="btn btn-success" />
                 </a>
             </p>
         </div>
     </div>
 </div>
-
+</form>
 <?php
 require_once ROOT_PATH . '/vistas/_commons/footer.php';
 ?>
-

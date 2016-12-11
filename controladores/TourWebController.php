@@ -24,5 +24,11 @@ class TourWebController {
    	$tour = Tour::find($id);
    	require_once ROOT_PATH . '/web/tour/show.php';
    }
+   
+   public function show2($id) {
+   	$tour = Tour::find($id);
+   	require_once ROOT_PATH . '/web/tour/show2.php';
+   }
+    
 
 }

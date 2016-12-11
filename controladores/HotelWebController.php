@@ -31,6 +31,11 @@ class HotelWebController {
     	$hotel = Hotel::find($id);
     	require_once ROOT_PATH . '/web/hotel/show.php';
     }
+    
+    public function show2($id) {
+    	$hotel = Hotel::find($id);
+    	require_once ROOT_PATH . '/web/hotel/show2.php';
+    }
 
   
     public function showMainPage(){

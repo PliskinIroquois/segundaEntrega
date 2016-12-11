@@ -31,7 +31,7 @@ require_once ROOT_PATH . '/vistas/_commons/header.php';
             <?php foreach ($hoteles as $hotel): ?>
                 <tr>
                     <td>
-                        <a href="hotel.php?action=show&id=<?php echo $hotel->id; ?>">
+                        <a href="hoteles.php?action=show2&id=<?php echo $hotel->id; ?>">
                             <?php echo ($hotel->nombre); ?>
                         </a>
                     </td>
@@ -60,7 +60,7 @@ require_once ROOT_PATH . '/vistas/_commons/header.php';
             <?php foreach ($tours as $tour): ?>
                 <tr>
                     <td>
-                        <a href="tours.php?action=show&id=<?php echo $tour->id; ?>"> <!-- cambiar -->
+                        <a href="tours.php?action=show2&id=<?php echo $tour->id; ?>"> <!-- cambiar -->
                             <?php echo ($tour->nombre); ?>
                         </a>
                     </td>
