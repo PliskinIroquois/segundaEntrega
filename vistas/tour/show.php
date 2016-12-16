@@ -12,6 +12,8 @@ require_once ROOT_PATH . '/vistas/_commons/navigation.php';
             <p><strong>Empresa que lo brinda: </strong><?php echo $tour->empresa; ?></p>
             <p><strong>Telefono de la empresa: </strong><?php echo $tour->telefono; ?></p>
             <p><strong>Correo de la empresa: </strong><?php echo $tour->correo; ?></p>
+            <a href="tour.php?action=show&id=<?php echo $tour->id; ?>">
+            <img src="uploads/<?php echo $tour->foto; ?>" style="width:45%;" />
             <p>
                 <a href="<?php echo (WEB_PATH . '/tour.php') ?>">
                     <input type="button" value="Volver" class="btn btn-success" />

@@ -7,6 +7,7 @@ class Tour {
     public $empresa;
     public $telefono;
     public $correo;
+    public $foto;
     private static $tabla = 'tour';
 
     public function __construct() {
@@ -16,13 +17,14 @@ class Tour {
         $this->empresa = 0;
         $this->telefono = '';
         $this->correo = '';
+        $this->foto = '';
     }
 
     public function save() {
         $bd = BaseDatos::getInstance();
         $bd->conectar();
-        $columnas = array('nombre', 'descripcion', 'empresa', 'telefono', 'correo');
-        $valores = array($this->nombre, $this->descripcion, $this->empresa, $this->telefono, $this->correo);
+        $columnas = array('nombre', 'descripcion', 'empresa', 'telefono', 'correo', 'foto');
+        $valores = array($this->nombre, $this->descripcion, $this->empresa, $this->telefono, $this->correo, $this->foto);
         $filtros = array('id' => $this->id);
         if (is_numeric($this->id) && $this->id > 0) {
             $bd->update(self::$tabla, $columnas, $valores, $filtros);
@@ -42,7 +44,7 @@ class Tour {
     public static function find($id) {
         $bd = BaseDatos::getInstance();
         $bd->conectar();
-        $columnas = array('id', 'nombre', 'descripcion', 'empresa', 'telefono', 'correo');
+        $columnas = array('id', 'nombre', 'descripcion', 'empresa', 'telefono', 'correo', 'foto');
         $filtros = array('id' => $id);
         $datos = $bd->select(self::$tabla, $columnas, $filtros);
         $tour = new Tour();
@@ -53,6 +55,7 @@ class Tour {
             $tour->empresa = $item['empresa'];
             $tour->telefono = $item['telefono'];
             $tour->correo = $item['correo'];
+            $tour->foto = $item['foto'];
             break;
         }
         $bd->desconectar();
@@ -62,7 +65,7 @@ class Tour {
     public static function findAll() {
         $bd = BaseDatos::getInstance();
         $bd->conectar();
-        $columnas = array('id', 'nombre', 'descripcion', 'empresa', 'telefono', 'correo');
+        $columnas = array('id', 'nombre', 'descripcion', 'empresa', 'telefono', 'correo', 'foto');
         $datos = $bd->select(self::$tabla, $columnas);
         $tours = array();
         foreach ($datos as $item) {
@@ -73,6 +76,7 @@ class Tour {
             $tour->empresa = $item['empresa'];
             $tour->telefono = $item['telefono'];
             $tour->correo = $item['correo'];
+            $tour->foto = $item['foto'];
             array_push($tours, $tour);
         }
         $bd->desconectar();
@@ -83,7 +87,7 @@ class Tour {
     public static function findRandTop5(){
     	$bd = BaseDatos::getInstance();
     	$bd->conectar();
-    	$columnas = array('id', 'nombre', 'descripcion', 'empresa', 'telefono', 'correo');
+    	$columnas = array('id', 'nombre', 'descripcion', 'empresa', 'telefono', 'correo', 'foto');
     	$datos = $bd->selectRand(self::$tabla, $columnas);
     	$tours = array();
     	foreach ($datos as $item) {
@@ -94,6 +98,7 @@ class Tour {
     		$tour->empresa = $item['empresa'];
     		$tour->telefono = $item['telefono'];
     		$tour->correo = $item['correo'];
+    		$tour->foto = $item['foto'];
     		array_push($tours, $tour);
     	}
     	$bd->desconectar();

@@ -23,6 +23,7 @@ require_once ROOT_PATH . '/vistas/_commons/navigation.php';
                 <th>Direccion</th>
                 <th>Telefono</th>
                 <th>Correo</th>
+                <th>Foto</th>
                 <th></th>
             </tr>
             <?php foreach ($hoteles as $hotel): ?>
@@ -38,6 +39,10 @@ require_once ROOT_PATH . '/vistas/_commons/navigation.php';
                     <td><?php echo $hotel->direccion; ?></td>
                     <td><?php echo $hotel->telefono; ?></td>
                     <td><?php echo $hotel->correo; ?></td>
+                     <td>
+                     	<a href="hotel.php?action=show&id=<?php echo $hotel->id; ?>">
+                        <img src="uploads/<?php echo $hotel->foto; ?>" style="width:45%;" />
+                    </td>
                     <td>
                         <a href="hotel.php?action=edit&id=<?php echo $hotel->id; ?>">Editar</a>
                         &nbsp; | &nbsp;

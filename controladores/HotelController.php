@@ -33,6 +33,16 @@ class HotelController {
             $hotel->direccion = $request->input('direccion');
             $hotel->telefono = $request->input('telefono');
             $hotel->correo = $request->input('correo');
+            $hotel->foto = $request->input('file');
+            
+            if( !empty( $_FILES['file']['name'] ) ){
+            	$foto = date('ymdhis') . '-' . strtolower($_FILES['file']['name']);
+            	move_uploaded_file ($_FILES['file']['tmp_name'], 'C:\UwAmp\www\segundaEntrega\uploads/' . $foto);
+            
+            	$hotel->foto = $foto;
+            	
+            }
+            
             $hotel->save();
             // Redirige a pagina index de Persona
             header('Location: ' . WEB_PATH . '/hotel.php?action=index');
@@ -52,6 +62,15 @@ class HotelController {
             $hotel->direccion = $request->input('direccion');
             $hotel->telefono = $request->input('telefono');
             $hotel->correo = $request->input('correo');
+            $hotel->foto = $request->input('file');
+            
+            if( !empty( $_FILES['file']['name'] ) ){
+            	$foto = date('ymdhis') . '-' . strtolower($_FILES['file']['name']);
+            	move_uploaded_file ($_FILES['file']['tmp_name'], 'C:\UwAmp\www\segundaEntrega\uploads/' . $foto);
+            
+            	$hotel->foto = $foto;
+            	 
+            }
             $hotel->save();
             header('Location: ' . WEB_PATH . '/hotel.php?action=index');
         } else {

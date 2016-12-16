@@ -26,6 +26,7 @@ require_once ROOT_PATH . '/vistas/_commons/header.php';
                 <th>Direccion</th>
                 <th>Telefono</th>
                 <th>Correo</th>
+                <th>Foto</th>
                 
             </tr>
             <?php foreach ($hoteles as $hotel): ?>
@@ -41,6 +42,10 @@ require_once ROOT_PATH . '/vistas/_commons/header.php';
                     <td><?php echo $hotel->direccion; ?></td>
                     <td><?php echo $hotel->telefono; ?></td>
                     <td><?php echo $hotel->correo; ?></td>
+                    <td>
+                     	<a href="hoteles.php?action=show2&id=<?php echo $hotel->id; ?>">
+                        <img src="uploads/<?php echo $hotel->foto; ?>" style="width:45%;" />
+                    </td>
                 </tr>
                 
             <?php endforeach; ?>
@@ -56,6 +61,7 @@ require_once ROOT_PATH . '/vistas/_commons/header.php';
                 <th>Empresa que lo brinda</th>
                 <th>Telefono de la empresa</th>
                 <th>Correo</th>
+                <th>Foto</th>
             </tr>
             <?php foreach ($tours as $tour): ?>
                 <tr>
@@ -68,6 +74,10 @@ require_once ROOT_PATH . '/vistas/_commons/header.php';
                     <td><?php echo $tour->empresa; ?></td>
                     <td><?php echo $tour->telefono; ?></td>
                     <td><?php echo $tour->correo; ?></td>
+                    <td>
+                     	<a href="tours.php?action=show2&id=<?php echo $tour->id; ?>">
+                        <img src="uploads/<?php echo $tour->foto; ?>" style="width:45%;" />
+                    </td>
                                 </tr>
             <?php endforeach; ?>
           

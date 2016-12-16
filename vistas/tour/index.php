@@ -36,6 +36,10 @@ require_once ROOT_PATH . '/vistas/_commons/navigation.php';
                     <td><?php echo $tour->telefono; ?></td>
                     <td><?php echo $tour->correo; ?></td>
                     <td>
+                     	<a href="tour.php?action=show&id=<?php echo $tour->id; ?>">
+                        <img src="uploads/<?php echo $tour->foto; ?>" style="width:45%;" />
+                    </td>
+                    <td>
                         <a href="tour.php?action=edit&id=<?php echo $tour->id; ?>">Editar</a>
                         &nbsp; | &nbsp;
                         <a href="tour.php?action=delete&id=<?php echo $tour->id; ?>">Eliminar</a>

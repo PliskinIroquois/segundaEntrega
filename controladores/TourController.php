@@ -30,6 +30,15 @@ class TourController {
             $tour->empresa = $request->input('empresa');
             $tour->telefono = $request->input('telefono');
             $tour->correo = $request->input('correo');
+            $tour->foto = $request->input('file');
+            
+            if( !empty( $_FILES['file']['name'] ) ){
+            	$foto = date('ymdhis') . '-' . strtolower($_FILES['file']['name']);
+            	move_uploaded_file ($_FILES['file']['tmp_name'], 'C:\UwAmp\www\segundaEntrega\uploads/' . $foto);
+            
+            	$tour->foto = $foto;
+            	 
+            }
             $tour->save();
             
             // Redirige a pagina index de Persona
@@ -47,6 +56,15 @@ class TourController {
             $tour->empresa = $request->input('empresa');
             $tour->telefono = $request->input('telefono');
             $tour->correo = $request->input('correo');
+            $tour->foto = $request->input('file');
+            
+            if( !empty( $_FILES['file']['name'] ) ){
+            	$foto = date('ymdhis') . '-' . strtolower($_FILES['file']['name']);
+            	move_uploaded_file ($_FILES['file']['tmp_name'], 'C:\UwAmp\www\segundaEntrega\uploads/' . $foto);
+            
+            	$tour->foto = $foto;
+            
+            }
             $tour->save();
             header('Location: ' . WEB_PATH . '/tour.php?action=index');
         } else {

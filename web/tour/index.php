@@ -33,6 +33,10 @@ require_once ROOT_PATH . '/vistas/_commons/header.php';
                     <td><?php echo $tour->empresa; ?></td>
                     <td><?php echo $tour->telefono; ?></td>
                     <td><?php echo $tour->correo; ?></td>
+                    <td>
+                     	<a href="tours.php?action=show&id=<?php echo $tour->id; ?>">
+                        <img src="uploads/<?php echo $tour->foto; ?>" style="width:45%;" />
+                    </td>
                                 </tr>
             <?php endforeach; ?>
              <tr> <a href="tours.php?action=showMainPage">

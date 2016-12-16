@@ -9,6 +9,7 @@ class Hotel {
     public $direccion;
     public $telefono;
     public $correo;
+    public $foto;
     private static $tabla = 'hotel';
 
     public function __construct() {
@@ -20,13 +21,14 @@ class Hotel {
         $this->direccion = '';
         $this->telefono = '';
         $this->correo = '';
+        $this->foto = '';
     }
 
     public function save() {
         $bd = BaseDatos::getInstance();
         $bd->conectar();
-        $columnas = array('nombre', 'descripcion', 'estrellas', 'ciudad', 'direccion', 'telefono', 'correo');
-        $valores = array($this->nombre, $this->descripcion, $this->estrellas, $this->ciudad, $this->direccion, $this->telefono, $this->correo);
+        $columnas = array('nombre', 'descripcion', 'estrellas', 'ciudad', 'direccion', 'telefono', 'correo', 'foto');
+        $valores = array($this->nombre, $this->descripcion, $this->estrellas, $this->ciudad, $this->direccion, $this->telefono, $this->correo, $this->foto);
         $filtros = array('id' => $this->id);
         if (is_numeric($this->id) && $this->id > 0) {
             $bd->update(self::$tabla, $columnas, $valores, $filtros);
@@ -46,7 +48,7 @@ class Hotel {
     public static function find($id) {
         $bd = BaseDatos::getInstance();
         $bd->conectar();
-        $columnas = array('id', 'nombre', 'descripcion', 'estrellas', 'ciudad', 'direccion', 'telefono', 'correo');
+        $columnas = array('id', 'nombre', 'descripcion', 'estrellas', 'ciudad', 'direccion', 'telefono', 'correo', 'foto');
         $filtros = array('id' => $id);
         $datos = $bd->select(self::$tabla, $columnas, $filtros);
         $hotel = new Hotel();
@@ -59,6 +61,7 @@ class Hotel {
             $hotel->direccion = $item['direccion'];
             $hotel->telefono = $item['telefono'];
             $hotel->correo = $item['correo'];
+            $hotel->foto = $item['foto'];
             break;
         }
         $bd->desconectar();
@@ -68,7 +71,7 @@ class Hotel {
     public static function findAll() {
         $bd = BaseDatos::getInstance();
         $bd->conectar();
-        $columnas = array('id', 'nombre', 'descripcion', 'estrellas', 'ciudad', 'direccion', 'telefono', 'correo');
+        $columnas = array('id', 'nombre', 'descripcion', 'estrellas', 'ciudad', 'direccion', 'telefono', 'correo', 'foto');
         $datos = $bd->select(self::$tabla, $columnas);
         $hoteles = array();
         foreach ($datos as $item) {
@@ -81,6 +84,7 @@ class Hotel {
             $hotel->direccion = $item['direccion'];
             $hotel->telefono = $item['telefono'];
             $hotel->correo = $item['correo'];
+            $hotel->foto = $item['foto'];
             array_push($hoteles, $hotel);
         }
         $bd->desconectar();
@@ -91,7 +95,7 @@ class Hotel {
     		   
     	$bd = BaseDatos::getInstance();
     	$bd->conectar();
-    	$columnas = array('id', 'nombre', 'descripcion', 'estrellas', 'ciudad', 'direccion', 'telefono', 'correo');
+    	$columnas = array('id', 'nombre', 'descripcion', 'estrellas', 'ciudad', 'direccion', 'telefono', 'correo', 'foto');
     	$datos = $bd->selectRand(self::$tabla, $columnas);
     	$hoteles = array();
     	foreach ($datos as $item) {
@@ -104,6 +108,7 @@ class Hotel {
     		$hotel->direccion = $item['direccion'];
     		$hotel->telefono = $item['telefono'];
     		$hotel->correo = $item['correo'];
+    		$hotel->foto = $item['foto'];
     		array_push($hoteles, $hotel);
     	}
     	$bd->desconectar();

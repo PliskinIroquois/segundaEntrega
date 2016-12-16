@@ -21,6 +21,7 @@ class Request {
         if(isset($this->dataRequest[$inputName])){
             $value = $this->dataRequest[$inputName];
         }
+        
         return $value;
     }
     

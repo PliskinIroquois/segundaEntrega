@@ -8,7 +8,7 @@ require_once ROOT_PATH . '/vistas/_commons/navigation.php';
         <div class="panel-heading">Editar Hotel: <?php echo $hotel->nombre; ?></div>
         <div class="panel-body">
             <div class="form-style-2" role="form">
-                <form action="<?php echo (WEB_PATH . '/hotel.php?action=edit&id=' . $hotel->id) ?>" method="post">
+                <form action="<?php echo (WEB_PATH . '/hotel.php?action=edit&id=' . $hotel->id) ?>" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="<?php echo $hotel->id ?>" />
                     <label for="nombre">
                         <span>Nombre <span class="required">*</span></span>
@@ -43,6 +43,11 @@ require_once ROOT_PATH . '/vistas/_commons/navigation.php';
                     <label for="correo">
                         <span>Correo <span class="required">*</span></span>
                         <input type="text" class="form-control input-field" type="text" name="correo" value="<?php echo $hotel->correo; ?>" />
+                    </label>
+                    <label for="file">
+                        <span>Imagen <span class="required">*</span></span>
+                        <input type="hidden" name="Foto" value="<?php echo $hotel->foto; ?>"/>
+                        <input class="form-control input-field" type="file" name="file" accept="file/*"/>
                     </label>
                     <p>
                         <input type="submit" value="Actualizar Hotel" class="btn btn-success" />
