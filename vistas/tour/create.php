@@ -34,7 +34,7 @@ require_once ROOT_PATH . '/vistas/_commons/navigation.php';
                         <input class="form-control input-field" type="file" name="file" accept="file/*"/>
                     </label>
                     <p>
-                        <input type="submit" value="Crear Hotel" class="btn btn-success" />
+                        <input type="submit" value="Crear Tour" class="btn btn-success" />
                         <a href="<?php echo (WEB_PATH . '/tour.php') ?>">
                             <input type="button" value="Cancelar" class="btn btn-success" />
                         </a>

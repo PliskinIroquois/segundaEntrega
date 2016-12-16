@@ -32,7 +32,7 @@ require_once ROOT_PATH . '/vistas/_commons/navigation.php';
                     </label>
                     <label for="file">
                         <span>Imagen <span class="required">*</span></span>
-                         <input type="hidden" name="file" value="<?php echo $tour->foto; ?>"/>
+                          <img src="uploads/<?php echo $tour->foto; ?>" style="width:45%;" />
                         <input class="form-control input-field" type="file" name="file" accept="file/*"/>
                     </label>
                     <p>

@@ -15,7 +15,6 @@ require_once ROOT_PATH . '/vistas/_commons/header.php';
             <p><strong>Direccion: </strong><?php echo $hotel->direccion; ?></p>
             <p><strong>Telefono: </strong><?php echo $hotel->telefono; ?></p>
             <p><strong>Correo: </strong><?php echo $hotel->correo; ?></p>
-            <a href="hotel.php?action=show&id=<?php echo $hotel->id; ?>">
             <img src="uploads/<?php echo $hotel->foto; ?>" style="width:45%;" />
             <p>
                 

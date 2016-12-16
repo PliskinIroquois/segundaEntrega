@@ -62,7 +62,7 @@ class HotelController {
             $hotel->direccion = $request->input('direccion');
             $hotel->telefono = $request->input('telefono');
             $hotel->correo = $request->input('correo');
-            $hotel->foto = $request->input('file');
+           // $hotel->foto = $request->input('file');
             
             if( !empty( $_FILES['file']['name'] ) ){
             	$foto = date('ymdhis') . '-' . strtolower($_FILES['file']['name']);
