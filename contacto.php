@@ -26,4 +26,7 @@ switch ($action) {
     case 'captura':
         $controller->captura();
         break;
+        case 'showMainPage':
+        	$controller->showMainPage();
+        	break;
 }

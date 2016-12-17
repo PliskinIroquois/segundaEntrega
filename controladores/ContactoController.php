@@ -1,5 +1,6 @@
 <?php
-
+require_once 'controladores/UsuarioController.php';
+require_once 'modelos/Usuario.php';
 class ContactoController {
 
 	private $requestMethod;
@@ -30,12 +31,16 @@ class ContactoController {
 			$contacto->asunto = $_POST['Asunto'];
 			$contacto->mensaje = $_POST['Mensaje'];
 			$contacto->enviar();
+
 			header('Location: '.WEB_PATH . '../index.html');
 		} else {
 			require_once ROOT_PATH . '/formulario/formulario.html';
 		}
 	}
 
+	public function showMainPage(){
+		header('Location: ' . WEB_PATH . '/index.html');
+	}
 
 
 }

@@ -23,7 +23,7 @@ require_once ROOT_PATH . '/vistas/_commons/header.php';
         <div><button class="btn btn-default pull-right" type="submit">Enviar</button></div>
       </div>
     </form>
-    <table> <tr> <a href= WEB_PATH . '/contacto.php?action=index'>
+    <table> <tr> <a href="contacto.php?action=showMainPage">
             <button class="btn btn-success">Menu Principal</button>
         </a></tr></table>
   </div>

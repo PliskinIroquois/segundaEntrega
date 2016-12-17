@@ -1,7 +1,10 @@
 <?php
+require_once 'controladores/UsuarioController.php';
+require_once 'modelos/Usuario.php';
 
 class Contacto {
 
+	
     public $nombre;
     public $apellidos;
     public $correo;
@@ -57,21 +60,27 @@ class Contacto {
     	//Esta línea es por si queréis enviar copia a alguien (dirección y, opcionalmente, nombre)
     	//$mail->AddReplyTo('replyto@correoquesea.com', 'El de la réplica');
     	//Y, ahora sí, definimos el destinatario (dirección y, opcionalmente, nombre)
-    	$mail->AddAddress('josefco123@hotmail.com');
+    	$usuarios = array();
+    	$usuarios = Usuario::findAll();
+    	for ($i = 0; $i < Count($usuarios); $i++) {
+    	if ($usuarios[$i]->es_admin == 1):
+    	$mail->AddAddress($usuarios[$i]->correo,$usuarios[$i]->nombre . ' ' . $usuarios[$i]->apellidos);
     	//Definimos el tema del email
     	$mail->Subject = $this->asunto;
     	//Para enviar un correo formateado en HTML lo cargamos con la siguiente función. Si no, puedes meterle directamente una cadena de texto.
     	$mail->MsgHTML($mensaje);
     	//Y por si nos bloquean el contenido HTML (algunos correos lo hacen por seguridad) una versión alternativa en texto plano (también será válida para lectores de pantalla)
     	$mail->AltBody = 'This is a plain-text message body';
-    	
+    	 
     	//Enviamos el correo
-    	if (!$mail->Send()) {
-    		echo "Error: " . $mail->ErrorInfo;
-    	} else {
-    		echo "Enviado!";
-    		header('Location: ../index.html');
-    	}
+    	
+    		
+    	endif;
+    
+    }
+    $mail->Send();
+ 
+
     	}
     	
     }
